@@ -2,7 +2,7 @@
 
 
 <div class="d-flex flex-column position-absolute top-50 start-50 translate-middle w-50">
-    <img src="images/logo.png" class="mb-4 mx-auto">
+    <img src="images/logo.png" class="mb-4 mx-auto" alt="Логотип">
     <h1 class="text-center h1 mb-4">Личный кабинет эмитента</h1>
     <form class="w-50 mx-auto" @onsubmit="OnSubmit" method="post" @formname="sign-in-form">
         <AntiforgeryToken/>
@@ -12,30 +12,10 @@
         </div>
 
         <div class="mb-4">
-            <InputText placeholder='Пароль' class="form-control rounded-pill border-2" @bind-Value="Model!.Password"/>
+            <InputText type="password" placeholder='Пароль' class="form-control rounded-pill border-2" @bind-Value="Model!.Password"/>
         </div>
         <button type="submit" class="btn btn-primary d-block mx-auto w-25 rounded-pill">
             Вход
         </button>
     </form>
 </div>
-
-@code
-{
-    [SupplyParameterFromForm]
-    public SignInModel? Model { get; set; }
-
-    protected override void OnInitialized() => Model ??= new();
-
-    public class SignInModel
-    {
-        public string Login { get; set; }
-        public string Password { get; set; }
-    }
-
-    private void OnSubmit()
-    {
-        Console.WriteLine(Model.Login);
-        Console.WriteLine(Model.Password);
-    }
-}
