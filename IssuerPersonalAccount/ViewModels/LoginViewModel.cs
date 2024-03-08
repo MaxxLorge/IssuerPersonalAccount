@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IssuerPersonalAccount.ViewModels;
 
-public class SignInViewModel
+public class LoginViewModel
 {
     [Required(ErrorMessage = "Небходимо ввести логин", AllowEmptyStrings = false)]
     public string Login { get; set; }

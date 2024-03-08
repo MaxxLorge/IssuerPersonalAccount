@@ -2,33 +2,25 @@ using IssuerPersonalAccount.Data;
 using IssuerPersonalAccount.ViewModels;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Identity;
 
 namespace IssuerPersonalAccount.Components.Pages;
 
 public partial class Login
 {
-    [Inject]
-    public SignInManager<User> SignInManager { get; set; } = null!;
-
-    [Inject] public NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private SignInManager<User> SignInManager { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+    [Inject] private ILogger<Login> Logger { get; set; } = null!;
 
     [SupplyParameterFromForm]
-    public SignInViewModel? Model { get; set; }
+    public LoginViewModel? LoginViewModel { get; set; } = new();
 
-    protected override void OnInitialized() => Model ??= new();
-
-    private async Task OnSubmit()
+    private async Task OnValidSubmit()
     {
-        Console.WriteLine(Model.Login);
-        Console.WriteLine(Model.Password);
-
         var result = await SignInManager
-            .PasswordSignInAsync(Model.Login, Model.Password, true, false);
+            .PasswordSignInAsync(LoginViewModel.Login, LoginViewModel.Password, true, false);
         
-        Console.WriteLine($"Аутентификация: {result.Succeeded}");
-        
-        if(result.Succeeded)
-            NavigationManager.NavigateTo("home");
+        Logger.LogInformation("Аутентификация пользователя {Login}: {Result}", LoginViewModel.Login, result.Succeeded);
     }
 }
