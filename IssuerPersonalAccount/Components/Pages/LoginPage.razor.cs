@@ -2,16 +2,15 @@ using IssuerPersonalAccount.Data;
 using IssuerPersonalAccount.ViewModels;
 
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Identity;
 
 namespace IssuerPersonalAccount.Components.Pages;
 
-public partial class Login
+public partial class LoginPage
 {
     [Inject] private SignInManager<User> SignInManager { get; set; } = null!;
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;
-    [Inject] private ILogger<Login> Logger { get; set; } = null!;
+    [Inject] private ILogger<LoginPage> Logger { get; set; } = null!;
 
     [SupplyParameterFromForm]
     public LoginViewModel? LoginViewModel { get; set; } = new();
@@ -21,6 +20,6 @@ public partial class Login
         var result = await SignInManager
             .PasswordSignInAsync(LoginViewModel.Login, LoginViewModel.Password, true, false);
         
-        Logger.LogInformation("Аутентификация пользователя {Login}: {Result}", LoginViewModel.Login, result.Succeeded);
+        Logger.LogInformation("Аутентификация пользователя {LoginPage}: {Result}", LoginViewModel.Login, result.Succeeded);
     }
 }
