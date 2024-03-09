@@ -58,13 +58,14 @@ void ConfigureApp(WebApplication webApplication)
     webApplication.UseHttpsRedirection();
 
     webApplication.UseStaticFiles();
-    webApplication.UseAntiforgery();
 
     webApplication.UseAuthentication();
     webApplication.UseAuthorization();
 
     webApplication.MapRazorComponents<App>()
         .AddInteractiveServerRenderMode();
+    
+    webApplication.UseAntiforgery();
 }
 
 void SeedData(WebApplication webApplication)
