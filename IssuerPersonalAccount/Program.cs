@@ -24,7 +24,7 @@ void ConfigureServices(IServiceCollection serviceCollection)
 
     serviceCollection.AddAuthentication();
     serviceCollection.AddAuthorization();
-    
+
     serviceCollection
         .AddRazorComponents()
         .AddInteractiveServerComponents();
