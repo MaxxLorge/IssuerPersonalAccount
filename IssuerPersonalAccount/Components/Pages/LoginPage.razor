@@ -17,7 +17,10 @@
             <InputText type="password" placeholder='Пароль' class="form-control rounded-pill border-2" @bind-Value="LoginViewModel!.Password"/>
             <ValidationMessage  For="@(() => LoginViewModel.Password)" class="text-danger"/>
         </div>
-        <div class="text-danger mb-4">@authErrorMessage</div>
+        @if (!_authSucceed)
+        {
+            <div class="text-danger mb-2 text-center">Неверный логин или пароль</div>
+        }
         <button type="submit" class="btn btn-primary d-block mx-auto w-25 rounded-pill">
             Вход
         </button>

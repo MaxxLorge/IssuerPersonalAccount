@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 using IssuerPersonalAccount.Data;
 using IssuerPersonalAccount.ViewModels;
 
@@ -11,7 +9,7 @@ namespace IssuerPersonalAccount.Components.Pages;
 
 public partial class LoginPage
 {
-    private string authErrorMessage;
+    private bool _authSucceed = true;
     
     [Inject] private SignInManager<User> SignInManager { get; set; } = null!;
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;
@@ -30,6 +28,6 @@ public partial class LoginPage
         if (result.Succeeded)
             NavigationManager.NavigateTo("main", true);
         else
-            authErrorMessage = "Неверное имя пользователя или пароль";
+            _authSucceed = false;
     }
 }
