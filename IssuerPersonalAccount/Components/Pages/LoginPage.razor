@@ -1,27 +1,31 @@
 ﻿@page "/account/login"
 
+@using IssuerPersonalAccount.Components.Layout
+
+@layout EmptyLayout
+
 @attribute [AllowAnonymous]
 
 
-<div class="d-flex flex-column position-absolute top-50 start-50 translate-middle w-50">
+<div class="d-flex flex-column position-absolute top-50 start-50 translate-middle">
     <img src="images/logo.png" class="mb-4 mx-auto" alt="Логотип">
     <h1 class="text-center h1 mb-4">Личный кабинет эмитента</h1>
-    <EditForm Model="@LoginViewModel" class="w-50 mx-auto" OnValidSubmit="@OnValidSubmit" FormName="@nameof(LoginPage)">
+    <EditForm Model="@LoginViewModel" class="d-flex flex-column w-75 mx-auto" OnValidSubmit="@OnValidSubmit" FormName="@nameof(LoginPage)">
         <DataAnnotationsValidator />
-        <div class="form-group mb-3">
+        <div class="mb-3">
             <InputText placeholder="Логин" class="form-control rounded-pill border-2" @bind-Value="LoginViewModel!.Login"/>
             <ValidationMessage For="@(() => LoginViewModel.Login)" class="text-danger"/>
         </div>
 
-        <div class=" form-group mb-2">
+        <div>
             <InputText type="password" placeholder='Пароль' class="form-control rounded-pill border-2" @bind-Value="LoginViewModel!.Password"/>
             <ValidationMessage  For="@(() => LoginViewModel.Password)" class="text-danger"/>
         </div>
         @if (!_authSucceed)
         {
-            <div class="text-danger mb-2 text-center">Неверный логин или пароль</div>
+            <div class="text-danger text-center mt-1">Неверный логин или пароль</div>
         }
-        <button type="submit" class="btn btn-primary d-block mx-auto w-25 rounded-pill">
+        <button type="submit" class="btn btn-primary d-block mx-auto w-50 rounded-pill mt-3">
             Вход
         </button>
     </EditForm>
