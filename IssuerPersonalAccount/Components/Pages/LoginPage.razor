@@ -10,7 +10,7 @@
 <div class="d-flex flex-column position-absolute top-50 start-50 translate-middle">
     <img src="images/logo.png" class="mb-5 mx-auto" alt="Логотип">
     <h1 class="text-center h1 mb-5">Личный кабинет эмитента</h1>
-    <EditForm Model="@LoginViewModel" class="d-flex flex-column w-75 mx-auto" OnValidSubmit="@OnValidSubmit" FormName="@nameof(LoginPage)">
+    <EditForm Model="@LoginViewModel" class="d-flex flex-column w-75 mx-auto" OnValidSubmit="OnValidSubmit" FormName="@nameof(LoginPage)">
         <DataAnnotationsValidator />
         <div class="mb-3">
             <InputText placeholder="Логин" class="form-control rounded-pill border-2" @bind-Value="LoginViewModel!.Login"/>

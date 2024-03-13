@@ -40,6 +40,8 @@ void ConfigureServices(IServiceCollection serviceCollection)
         .AddIdentity<User, IdentityRole<int>>()
         .AddEntityFrameworkStores<AppDbContext>();
 
+    serviceCollection.AddBlazorBootstrap();
+
     serviceCollection.AddScoped<DataSeeder>();
 }
 
