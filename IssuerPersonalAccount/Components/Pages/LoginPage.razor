@@ -8,8 +8,8 @@
 
 
 <div class="d-flex flex-column position-absolute top-50 start-50 translate-middle">
-    <img src="images/logo.png" class="mb-4 mx-auto" alt="Логотип">
-    <h1 class="text-center h1 mb-4">Личный кабинет эмитента</h1>
+    <img src="images/logo.png" class="mb-5 mx-auto" alt="Логотип">
+    <h1 class="text-center h1 mb-5">Личный кабинет эмитента</h1>
     <EditForm Model="@LoginViewModel" class="d-flex flex-column w-75 mx-auto" OnValidSubmit="@OnValidSubmit" FormName="@nameof(LoginPage)">
         <DataAnnotationsValidator />
         <div class="mb-3">
@@ -25,7 +25,7 @@
         {
             <div class="text-danger text-center mt-1">Неверный логин или пароль</div>
         }
-        <button type="submit" class="btn btn-primary d-block mx-auto w-50 rounded-pill mt-3">
+        <button type="submit" class="btn btn-primary d-block mx-auto w-50 rounded-pill mt-3 sign-in-btn">
             Вход
         </button>
     </EditForm>
