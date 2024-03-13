@@ -26,7 +26,7 @@ public partial class LoginPage
         Logger.LogInformation("Аутентификация пользователя {LoginPage}: {Result}", LoginViewModel.Login, result.Succeeded);
 
         if (result.Succeeded)
-            NavigationManager.NavigateTo("main", true);
+            NavigationManager.NavigateTo("/", true);
         else
             _authSucceed = false;
     }
