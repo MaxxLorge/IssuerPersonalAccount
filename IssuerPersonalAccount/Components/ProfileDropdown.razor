@@ -8,6 +8,6 @@
         <Icon Name="IconName.PersonCircle" Size="IconSize.x4"/>
     </DropdownToggleButton>
     <DropdownMenu Position="DropdownMenuPosition.Start">
-        <button @onclick="HandleExitButtonClick">Выйти</button>
+        <DropdownItem Type="ButtonType.Link" To="account/logout" Class="text-black">Выйти</DropdownItem>
     </DropdownMenu>
 </Dropdown>
