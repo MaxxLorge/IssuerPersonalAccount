@@ -10,10 +10,10 @@ namespace IssuerPersonalAccount.Components;
 
 public partial class ProfileDropdown
 {
-    [Inject] private SignInManager<User> SignInManager { get; set; } = null!;
+    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
 
     private async Task HandleExitButtonClick(MouseEventArgs eventArgs)
     {
-        await SignInManager.SignOutAsync();
+        NavigationManager.NavigateTo("account/logout");
     }
 }
