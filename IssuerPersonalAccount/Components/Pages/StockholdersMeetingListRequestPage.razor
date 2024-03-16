@@ -1,0 +1,63 @@
+@page "/requests/stockholders-meeting-list"
+
+@rendermode InteractiveServer
+
+<div class="py-5 px-3">
+    <h3 class="text-center main-form-header mb-4">Распоряжение Эмитента на список к ОСА</h3>
+    <EditForm EditContext="_editContext">
+        @if (_currentStep == 1)
+        {
+            <div class="d-flex flex-column gap-5">
+                <div class="border border-dark rounded-3 p-3">
+                    <div class="w-75 p-3">
+                        <div class="fw-bold mb-1">Предоставить:</div>
+                        <div>
+                            <InputCheckbox @bind-Value="_model.EntitledToParticipateInTheGeneralMeetingShareholders"/>
+                            <span>Список лиц, имеющих право на участие в общем собрании акционеров</span>
+                        </div>
+                        <div>
+                            <InputCheckbox @bind-Value="_model.ExercisingSecuritiesRights"/>
+                            <span>Список лиц, осуществляющих права по ценным бумагам</span>
+                        </div>
+                        <div>
+                            <InputCheckbox @bind-Value="_model.EntitledToParticipateInTheGeneralMeetingShareholdersWithoutPersonalData"/>
+                            <span>Список лиц, имеющих право на участие в общем собрании акционеров, без персональных данных и данных о волеизъявлении для ознакомления (п. 4. Ст. 51 ФЗ об АО).</span>
+                        </div>
+                        <div class="mt-4">
+                            <span>Дата определения (фиксации) лиц</span>
+                            <DateInput TValue="DateOnly?" Class="w-25 d-inline-block ms-3" ValueExpression="() => _model.PersonsFixationDate"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-dark rounded-3 p-3">
+                    <h4 class="text-center subheader mb-3">Сведения об общем собрании акционеров</h4>
+                    <div class="d-flex gap-3">
+                        <div class="w-25">Решение о проведении общего собрания акционеров принято:</div>
+                        <div class="d-flex flex-column gap-1">
+                            <div class="d-flex gap-3">
+                                <input type="radio" id="directorsCommittee" name="stockholdersMeetingIssuer">
+                                <label for="directorsCommittee">Советом директоров</label>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <input type="radio" id="customSmiIssuer" name="stockholdersMeetingIssuer">
+                                <label for="customSmiIssuer">
+                                    <InputText @bind-Value="_model.CustomSmiIssuer" placeholder="Введите наименование" class="form-control"/>
+                                </label>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <div class="d-flex gap-3">
+                                    <label for="number">№</label>
+                                    <InputText @bind-Value="_model.Number" id="number" class="form-control"/>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <label for="decisionDate">дата принятия решения</label>
+                                    <DateInput ElementId="decisionDate" TValue="DateOnly?" ValueExpression="() => _model.DecisionDate" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </EditForm>
+</div>

@@ -1,0 +1,11 @@
+.main-form-header{
+    font-size: 15px;
+    color: var(--red-color-main);
+    font-weight: bold;
+}
+
+.subheader{
+    font-size: 14px;
+    color: var(--red-color-main);
+    font-weight: bold;
+}
