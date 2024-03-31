@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace IssuerPersonalAccount.ViewModels;
+namespace IssuerPersonalAccount.Models;
 
-public class StockholdersMeetingListRequestViewModel
+public class StockholdersMeetingListRequestModel
 {
     /// <summary>
     /// Список лиц, имеющих право на участие в общем собрании акционеров

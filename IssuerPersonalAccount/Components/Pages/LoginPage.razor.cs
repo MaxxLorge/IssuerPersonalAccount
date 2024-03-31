@@ -1,5 +1,5 @@
 using IssuerPersonalAccount.Data;
-using IssuerPersonalAccount.ViewModels;
+using IssuerPersonalAccount.Models;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -16,14 +16,14 @@ public partial class LoginPage
     [Inject] private ILogger<LoginPage> Logger { get; set; } = null!;
 
     [SupplyParameterFromForm]
-    public LoginViewModel LoginViewModel { get; set; } = new();
+    public LoginModel LoginModel { get; set; } = new();
 
     private async Task OnValidSubmit(EditContext editContext)
     {
         var result = await SignInManager
-            .PasswordSignInAsync(LoginViewModel.Login, LoginViewModel.Password, true, false);
+            .PasswordSignInAsync(LoginModel.Login, LoginModel.Password, true, false);
         
-        Logger.LogInformation("Аутентификация пользователя {LoginPage}: {Result}", LoginViewModel.Login, result.Succeeded);
+        Logger.LogInformation("Аутентификация пользователя {LoginPage}: {Result}", LoginModel.Login, result.Succeeded);
 
         if (result.Succeeded)
             NavigationManager.NavigateTo("/", true);

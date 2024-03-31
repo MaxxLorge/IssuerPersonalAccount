@@ -1,4 +1,4 @@
-using IssuerPersonalAccount.ViewModels;
+using IssuerPersonalAccount.Models;
 
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -10,7 +10,7 @@ public partial class StockholdersMeetingListRequestPage
 
     private DateOnly? _someDate;
 
-    private StockholdersMeetingListRequestViewModel _model = new();
+    private StockholdersMeetingListRequestModel _model = new();
 
     private EditContext? _editContext;
 

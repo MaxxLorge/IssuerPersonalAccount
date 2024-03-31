@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace IssuerPersonalAccount.ViewModels;
+namespace IssuerPersonalAccount.Models;
 
-public class LoginViewModel
+public class LoginModel
 {
     [Required(ErrorMessage = "Небходимо ввести логин", AllowEmptyStrings = false)]
     public string Login { get; set; }
