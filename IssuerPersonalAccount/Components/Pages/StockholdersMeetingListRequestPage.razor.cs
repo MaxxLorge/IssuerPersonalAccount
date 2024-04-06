@@ -6,9 +6,15 @@ namespace IssuerPersonalAccount.Components.Pages;
 
 public partial class StockholdersMeetingListRequestPage
 {
+    private string[] _meetingTypes = new[]
+    {
+        "Годовое",
+        "Внеочередное",
+        "Совместное присутствие",
+        "Заочное голосование",
+    };
+    
     private int _currentStep = 1;
-
-    private DateOnly? _someDate;
 
     private StockholdersMeetingListRequestModel _model = new();
 

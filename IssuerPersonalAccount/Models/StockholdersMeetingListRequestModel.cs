@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IssuerPersonalAccount.Models;
 
-public class StockholdersMeetingListRequestModel
+public class StockholdersMeetingListRequestModel : IValidatableObject
 {
     /// <summary>
     /// Список лиц, имеющих право на участие в общем собрании акционеров
@@ -33,4 +33,19 @@ public class StockholdersMeetingListRequestModel
 
     [Required(ErrorMessage = "Необходимо выбрать дату")]
     public DateOnly? DecisionDate { get; set; }
+
+    [Required] public string MeetingType { get; set; }
+
+    [Required]
+    public DateOnly? MeetingDate { get; set; }
+
+    public bool ShowNominalShareholders { get; set; }
+
+    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        if (!EntitledToParticipateInTheGeneralMeetingShareholders
+            && !ExercisingSecuritiesRights
+            && !EntitledToParticipateInTheGeneralMeetingShareholdersWithoutPersonalData)
+            yield return new ValidationResult("Необходимо выбрать одну из опций");
+    }
 }

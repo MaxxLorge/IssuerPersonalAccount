@@ -2,12 +2,12 @@
 
 @rendermode InteractiveServer
 
-<div class="py-5 px-3">
-    <h3 class="text-center main-form-header mb-4">Распоряжение Эмитента на список к ОСА</h3>
+<div class="py-4 px-3 h-100">
+    <h3 class="text-center main-form-header mb-3">Распоряжение Эмитента на список к ОСА</h3>
     <EditForm EditContext="_editContext">
         @if (_currentStep == 1)
         {
-            <div class="d-flex flex-column gap-5">
+            <div class="d-flex flex-column justify-content-between">
                 <div class="border border-dark rounded-3 p-3">
                     <div class="w-75 p-3">
                         <div class="fw-bold mb-1">Предоставить:</div>
@@ -24,14 +24,15 @@
                             <span>Список лиц, имеющих право на участие в общем собрании акционеров, без персональных данных и данных о волеизъявлении для ознакомления (п. 4. Ст. 51 ФЗ об АО).</span>
                         </div>
                         <div class="mt-4">
-                            <span>Дата определения (фиксации) лиц</span>
-                            <DateInput TValue="DateOnly?" Class="w-25 d-inline-block ms-3" ValueExpression="() => _model.PersonsFixationDate"/>
+                            <label for="personsFixationDate">Дата определения (фиксации) лиц</label>
+                            <DateInput ElementId="personsFixationDate" TValue="DateOnly?" Class="w-25 d-inline-block ms-3" ValueExpression="() => _model.PersonsFixationDate"/>
                         </div>
                     </div>
                 </div>
+                
                 <div class="border border-dark rounded-3 p-3">
-                    <h4 class="text-center subheader mb-3">Сведения об общем собрании акционеров</h4>
-                    <div class="d-flex gap-3">
+                    <h4 class="text-center subheader mb-3">Сведения об общем собрании акционеров:</h4>
+                    <div class="d-flex gap-3 mb-3">
                         <div class="w-25">Решение о проведении общего собрания акционеров принято:</div>
                         <div class="d-flex flex-column gap-1">
                             <div class="d-flex gap-3">
@@ -40,9 +41,7 @@
                             </div>
                             <div class="d-flex gap-3">
                                 <input type="radio" id="customSmiIssuer" name="stockholdersMeetingIssuer">
-                                <label for="customSmiIssuer">
-                                    <InputText @bind-Value="_model.CustomSmiIssuer" placeholder="Введите наименование" class="form-control"/>
-                                </label>
+                                <InputText @bind-Value="_model.CustomSmiIssuer" placeholder="Введите наименование" class="form-control"/>
                             </div>
                             <div class="d-flex gap-3">
                                 <div class="d-flex gap-3">
@@ -56,6 +55,27 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="d-flex gap-3 mb-2">
+                        <label for="meetingType">Вид и форма проведения собрания</label>
+                        <InputRadioGroup ValueExpression="() => _model.MeetingType">
+                            @foreach (var meetingType in _meetingTypes)
+                            {
+                                <InputRadio id="@meetingType" Value="meetingType" />
+                                <label for="@meetingType">@meetingType</label>
+                            }
+                        </InputRadioGroup>
+                    </div>
+                    
+                    <div class="d-flex gap-3">
+                        <label for="meetingDate">Дата проведения собрания</label>
+                        <DateInput Class="w-25" ElementId="meetingDate" ValueExpression="() => _model.MeetingDate"/>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <Switch Disabled="@(_currentStep != 1)" ValueExpression="() => _model.ShowNominalShareholders" Label="Раскрывать списки НД"/>
+                    <Button class="btn btn-danger">Продолжить</Button>
                 </div>
             </div>
         }
