@@ -2,6 +2,7 @@
 
 :root{
     --red-color-main: #b82116;
+    --yellow-color-main: #FBCB18;
 }
 
 *{
@@ -13,4 +14,8 @@
 html, body{
     height: 100%;
     overflow: auto;
+}
+
+.bg-yellow{
+    background-color: var(--yellow-color-main);
 }

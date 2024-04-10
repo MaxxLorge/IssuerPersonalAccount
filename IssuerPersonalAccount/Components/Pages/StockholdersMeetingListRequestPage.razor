@@ -7,7 +7,7 @@
     <EditForm EditContext="_editContext">
         @if (_currentStep == 1)
         {
-            <div class="d-flex flex-column justify-content-between">
+            <div class="d-flex flex-column gap-3">
                 <div class="border border-dark rounded-3 p-3">
                     <div class="w-75 p-3">
                         <div class="fw-bold mb-1">Предоставить:</div>
@@ -75,7 +75,7 @@
                 
                 <div class="d-flex justify-content-between">
                     <Switch Disabled="@(_currentStep != 1)" ValueExpression="() => _model.ShowNominalShareholders" Label="Раскрывать списки НД"/>
-                    <Button class="btn btn-danger">Продолжить</Button>
+                    <Button class="btn bg-yellow">Продолжить</Button>
                 </div>
             </div>
         }
